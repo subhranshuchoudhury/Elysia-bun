@@ -25,9 +25,21 @@ const validResult = (context) => {
   return response;
 };
 
+const verifyToken = (context) => {
+  const schema = z
+    .object({
+      token: z.string().min(1),
+    })
+    .strict();
+
+  const response = schema.safeParse(context);
+  return response;
+};
+
 const validateRequests = {
   validLogin,
   validResult,
+  verifyToken,
 };
 
 module.exports = validateRequests;
