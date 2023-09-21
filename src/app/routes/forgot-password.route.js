@@ -7,4 +7,10 @@ module.exports = function (app) {
     if (!response.success) return response;
     return await controller.ForgotPassword(context, context.set);
   });
+
+  app.post("/api/change-password", async (context) => {
+    const response = validateRequests.validateChangePassword(context.body);
+    if (!response.success) return response;
+    return await controller.changePassword(context, context.set);
+  });
 };

@@ -48,7 +48,21 @@ const validateForgotPassword = (context) => {
   return response;
 };
 
+const validateChangePassword = (context) => {
+  const schema = z
+    .object({
+      token: z.string().min(1),
+      newPassword: z.string().min(7),
+      oldPassword: z.string().min(1),
+    })
+    .strict();
+
+  const response = schema.safeParse(context);
+  return response;
+};
+
 const validateRequests = {
+  validateChangePassword,
   validateForgotPassword,
   validLogin,
   validResult,
