@@ -1,0 +1,20 @@
+fetch("https://soaportals.com/StudentPortalSOAAPI//studentsgpacgpa/getallsemesterdata", {
+  "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "en-US,en;q=0.9",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxT1hTcjU1NmNSNWVVd09zRU5Qb25BPT0iLCJzY29wZXMiOlt7ImF1dGhvcml0eSI6IlJPTEVfU1RVREVOVCJ9XSwiaXNzIjoiaHR0cDovL2NhbXB1c2x5bnguY29tIiwiaWF0IjoxNjk1MzA5NTgwLCJleHAiOjE2OTUzMTY3ODB9.o0mZq0bubiOGwBWQkxZf-lc0xeBep2r_8NfR-cLr_mI",
+    "content-type": "application/json",
+    "sec-ch-ua": "\"Microsoft Edge\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Linux\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+  },
+  "referrer": "https://soaportals.com/StudentPortalSOA/",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "{\"instituteid\":\"SOAUINSD1312A0000002\",\"studentid\":\"2241003051\",\"stynumber\":\"2\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});

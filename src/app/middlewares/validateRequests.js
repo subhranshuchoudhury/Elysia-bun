@@ -12,8 +12,22 @@ const validLogin = (context) => {
   return response;
 };
 
+const validResult = (context) => {
+  const schema = z
+    .object({
+      token: z.string().min(1),
+      regdNo: z.string().max(10).min(10),
+      styNumber: z.string().min(1),
+    })
+    .strict();
+
+  const response = schema.safeParse(context);
+  return response;
+};
+
 const validateRequests = {
   validLogin,
+  validResult,
 };
 
 module.exports = validateRequests;

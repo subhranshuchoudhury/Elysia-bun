@@ -1,9 +1,10 @@
 const { hostDomain } = require("../config/hostAPI");
+const { instituteId } = require("../config/institute");
 
-exports.Login = async (req, res) => {
+exports.Result = async (req, res) => {
   try {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer");
+    myHeaders.append("Authorization", `Bearer ${req.body.token}`);
     myHeaders.append("Origin", "https://soaportals.com");
     myHeaders.append("Host", "soaportals.com");
     myHeaders.append("Sec-Fetch-Dest", "empty");
@@ -23,10 +24,9 @@ exports.Login = async (req, res) => {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-      otppwd: null,
-      username: `${req.body.regdNo}`,
-      passwordotpvalue: `${req.body.password}`,
-      Modulename: "STUDENTMODULE",
+      instituteid: instituteId,
+      studentid: `${req.body.regdNo}`,
+      stynumber: `${req.body.styNumber}`,
     });
 
     var requestOptions = {
@@ -37,7 +37,7 @@ exports.Login = async (req, res) => {
     };
 
     const response = await fetch(
-      `${hostDomain}//token/generate-token1`,
+      `${hostDomain}//studentsgpacgpa/getallsemesterdata`,
       requestOptions
     );
 
@@ -48,6 +48,7 @@ exports.Login = async (req, res) => {
       data: data,
     };
   } catch (error) {
+    console.log(error);
     res.status = 500;
     return {
       success: false,

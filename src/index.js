@@ -8,6 +8,7 @@ app.get("/", () => {
 });
 
 require("./app/routes/auth.route")(app);
+require("./app/routes/result.route")(app);
 
 const PORT = "3000" || String(process.env.PORT);
 app.listen(PORT, (res) => {
