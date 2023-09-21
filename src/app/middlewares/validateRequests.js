@@ -36,7 +36,20 @@ const verifyToken = (context) => {
   return response;
 };
 
+const validateForgotPassword = (context) => {
+  const schema = z
+    .object({
+      regdNo: z.string().max(10).min(10),
+      dob: z.string().min(1),
+    })
+    .strict();
+
+  const response = schema.safeParse(context);
+  return response;
+};
+
 const validateRequests = {
+  validateForgotPassword,
   validLogin,
   validResult,
   verifyToken,
