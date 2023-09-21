@@ -1,7 +1,6 @@
 import { Elysia } from "elysia";
-// import { swagger } from "@elysiajs/swagger";
-
-const app = new Elysia();
+import { cors } from "@elysiajs/cors";
+const app = new Elysia().use(cors());
 
 app.get("/", () => {
   return { success: "true", message: "Server is working fine." };
