@@ -1,4 +1,5 @@
 const z = require("zod");
+const { registrationCode } = require("../config/registrationcode");
 
 const validLogin = (context) => {
   const schema = z
@@ -61,9 +62,23 @@ const validateChangePassword = (context) => {
   return response;
 };
 
+const validateGetSubjects = (context) => {
+  const schema = z
+    .object({
+      token: z.string().min(1),
+      regdNo: z.string().max(10).min(10),
+      regdCode: z.string().min(1).default(registrationCode).optional(),
+    })
+    .strict();
+
+  const response = schema.safeParse(context);
+  return response;
+};
+
 const validateRequests = {
   validateChangePassword,
   validateForgotPassword,
+  validateGetSubjects,
   validLogin,
   validResult,
   verifyToken,
